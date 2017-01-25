@@ -8,8 +8,8 @@ Promises Workshop: build the pledge.js ES6-style promise library
 function $Promise(executor){
   if (typeof executor !== 'function') throw Error('no argument');
   this._state = 'pending';
-  this._value = null;
-  executor(this._internalResolve, this._internalReject);
+  this._value = undefined;
+  executor(this._internalResolve.bind(this), this._internalReject.bind(this));
 
 };
 
